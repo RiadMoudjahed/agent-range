@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Agent Range | Security testing for AI agents</title>
+  <meta name="description" content="Fixed-scope security assessments for AI agents that call tools, read customer data and take actions. Proven impact, concrete fixes, retest included.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="#">agent_range</a>
+    <nav>
+      <a href="#risk">The risk</a>
+      <a href="#packages">Packages</a>
+      <a href="#process">Process</a>
+      <a href="sample-report.html">Sample report</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+<section>
+  <div class="wrap">
+    <p class="eyebrow">AI agent security assessments</p>
+    <h1>Security testing for AI agents that take actions</h1>
+    <p class="lede">Your agent reads customer data, calls your APIs and can move money. I attack it the way an outsider would, prove what an attacker could actually do, and verify your fixes before you ship.</p>
+    <div class="actions">
+      <a class="btn" href="#book">Book a free 30-minute threat-model review</a>
+      <a class="btn ghost" href="sample-report.html">Read a sample report</a>
+    </div>
+    <p class="note">On the call we walk through how your agent is wired, and I name the three attack paths I would test first.</p>
+  </div>
+</section>
+
+<section id="risk">
+  <div class="wrap">
+    <h2>Your last pentest probably did not cover this</h2>
+    <p class="lede">A standard test checks your API. It rarely checks what happens when a customer email tells your agent to call that API for them. These are the patterns I test for, shown on a fictional shop:</p>
+    <div class="grid">
+      <div class="card">
+        <h3>Someone else's data</h3>
+        <p>The agent's tools use one shared service account, so the only thing protecting other customers' records is a sentence in the prompt.</p>
+        <p class="scenario">"Show me order B-2001" returned another customer's delivery address and gate code.</p>
+      </div>
+      <div class="card">
+        <h3>A ticket that moves money</h3>
+        <p>An internal agent reads text that outsiders wrote, and it holds a tool with real effect.</p>
+        <p class="scenario">A support ticket addressed to the triage agent got a refund ten times over its policy limit approved.</p>
+      </div>
+      <div class="card">
+        <h3>Rules that only live in the prompt</h3>
+        <p>Refund limits, approval steps and data boundaries written as instructions to the model instead of checks in code.</p>
+        <p class="scenario">"Never refund more than the order total" held until someone asked politely with a reason.</p>
+      </div>
+    </div>
+    <p class="note">All three come from <a href="#lab">Larkspur</a>, my open-source practice lab. You can reproduce them yourself.</p>
+  </div>
+</section>
+
+<section id="packages">
+  <div class="wrap">
+    <h2>Fixed scope, fixed price</h2>
+    <p class="lede">You get a written quote within two business days of the scoping questionnaire. The price does not change during the engagement unless you add scope.</p>
+    <div class="grid">
+      <div class="card">
+        <p class="tag">Agent Snapshot</p>
+        <h3>One agent, about five testing days</h3>
+        <ul>
+          <li>Threat model of the agent, its tools and its data</li>
+          <li>Manual testing from every untrusted input</li>
+          <li>Report with evidence, success rates and fixes</li>
+          <li>Readout call with your engineers</li>
+          <li>Retest of every finding within 60 days</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Agent Assessment</p>
+        <h3>Multi-agent systems, MCP and RAG</h3>
+        <ul>
+          <li>Everything in the Snapshot</li>
+          <li>Attack chains across agents and tool servers</li>
+          <li>Retrieval and memory poisoning tests</li>
+          <li>Fix-verification session with your team</li>
+          <li>Architecture recommendations</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Release Retainer</p>
+        <h3>Testing with every significant release</h3>
+        <ul>
+          <li>A set number of testing days per quarter</li>
+          <li>Priority scheduling before launches</li>
+          <li>Threat model kept current as tools change</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note">If a finding you marked fixed fails the retest, I retest again at no charge until it passes or you accept the risk.</p>
+  </div>
+</section>
+
+<section id="process">
+  <div class="wrap">
+    <h2>How an engagement runs</h2>
+    <ol class="steps">
+      <li><h3>Threat-model call</h3><p class="muted">30 minutes, free. You describe the agent, I name the likely attack paths.</p></li>
+      <li><h3>Scope and quote</h3><p class="muted">A short questionnaire, then a fixed quote and a statement of work.</p></li>
+      <li><h3>Authorized testing</h3><p class="muted">In staging by default, inside agreed windows, after you sign a written testing authorization.</p></li>
+      <li><h3>Report and retest</h3><p class="muted">Report within five business days, a readout call, then a retest of your fixes.</p></li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>What the report gives your engineers</h2>
+    <div class="grid">
+      <div class="card"><h3>Proof you can rerun</h3><p>Every finding shows a concrete effect, such as a record read or a test refund issued, with steps your team can rerun.</p></div>
+      <div class="card"><h3>Success rates</h3><p>Model behavior varies, so each attack is repeated and reported with how often it worked.</p></div>
+      <div class="card"><h3>Fixes in code</h3><p>Scoped credentials, approval gates and hard limits come first. Prompt changes are listed as risk reduction only.</p></div>
+      <div class="card"><h3>A framework your auditors know</h3><p>Findings are mapped to the OWASP Top 10 for LLM Applications.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="lab">
+  <div class="wrap">
+    <h2>Try the attacks yourself</h2>
+    <p class="lede">Larkspur is a free, open-source lab: a fictional shop with two vulnerable agents, three challenges and a fixed version that shows the code changes. It runs on your laptop with a local model.</p>
+    <div class="actions">
+      <a class="btn ghost" href="https://github.com/RiadMoudjahed/larkspur-lab">Larkspur on GitHub</a>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>How your data is handled</h2>
+    <div class="grid">
+      <div class="card"><p>Mutual NDA and statement of work before anything is shared.</p></div>
+      <div class="card"><p>Engagement data on encrypted storage, deleted on an agreed date, with written confirmation.</p></div>
+      <div class="card"><p>No public mention of your company without written consent.</p></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Who does the testing</h2>
+    <p class="lede">I'm Riad Moudjahed, an AI security engineer and penetration tester. I build AI systems and I break them. My open-source work includes ModelGuard, which scans ML models for malicious code; an auditor for cloud environments that host AI workloads; and a full security framework built around a real RAG system, covering design, attack, assessment and defense. I also built Larkspur, the agent lab on this page, and I have hunted bugs on public bug bounty programs.</p>
+    <div class="grid">
+      <div class="card">
+        <p class="tag">Certifications</p>
+        <ul>
+          <li>AI Security &amp; Governance (Securiti)</li>
+          <li>Google Cybersecurity Professional Certificate</li>
+          <li>Google Cloud Cybersecurity Certificate</li>
+          <li>IBM Cybersecurity Analyst Professional Certificate</li>
+        </ul>
+      </div>
+      <div class="card">
+        <p class="tag">Find my work</p>
+        <ul>
+          <li><a href="https://github.com/RiadMoudjahed">GitHub</a></li>
+          <li><a href="https://www.linkedin.com/in/riad-moudjahed/">LinkedIn</a></li>
+          <li><a href="https://medium.com/@riadmouja47">Medium</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="faq">
+  <div class="wrap">
+    <h2>Questions</h2>
+    <details><summary>Do you test in production?</summary><p>Staging by default. Production only with written approval, agreed time windows and test records created for the purpose. No destructive actions without your sign-off for each case.</p></details>
+    <details><summary>Which models and frameworks do you cover?</summary><p>Any agent that calls tools, whatever the model provider or framework. The weaknesses are in how tools, credentials and untrusted content are wired, and that is what I test.</p></details>
+    <details><summary>We only have a chatbot over public docs. Do we need this?</summary><p>Probably not. If it has no tools and no private data, an automated scan is a better use of your budget. I will say so on the call.</p></details>
+    <details><summary>What if you find nothing serious?</summary><p>You get a report showing what was tested and how, which is what customers and auditors ask for. A clean result from a documented test is worth having.</p></details>
+    <details><summary>Is this a guarantee that our agent is secure?</summary><p>No test can promise that. It is a time-boxed, point-in-time assessment that finds what an attacker would most likely find first, and checks that your fixes work.</p></details>
+    <details><summary>How soon can you start?</summary><p>I take one or two engagements a month so each gets full attention. Current availability is shown when you book.</p></details>
+  </div>
+</section>
+
+<section id="book">
+  <div class="wrap">
+    <h2>Find out what your agent would do for an attacker</h2>
+    <p class="lede">Book the free 30-minute threat-model review. You leave with the three attack paths I would test first, whether or not we work together.</p>
+    <div class="actions">
+      <a class="btn" href="mailto:riad.moudjahed@gmail.com?subject=Threat-model%20review%20request&amp;body=Company%3A%20%0AWhat%20the%20agent%20does%20(one%20or%20two%20sentences)%3A%20%0ALive%20or%20launch%20date%3A%20%0AThree%20times%20that%20suit%20you%20(with%20time%20zone)%3A%20">Book the review</a>
+      <a class="btn ghost" href="mailto:riad.moudjahed@gmail.com">riad.moudjahed@gmail.com</a>
+    </div>
+    <p class="note">You get a reply with a confirmed time within one business day.</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">Agent Range | Security testing of systems you own or are authorized to test.</div>
+</footer>
+
+</body>
+</html>
