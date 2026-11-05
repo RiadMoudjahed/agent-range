@@ -7,23 +7,27 @@
   <meta name="description" content="A sample AI agent security assessment report for a fictional company, Larkspur Outfitters.">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Schibsted+Grotesk:wght@400;600;700&display=swap" rel="stylesheet">
+  <meta name="theme-color" content="#F4F6F7" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0F1418" media="(prefers-color-scheme: dark)">
+  <link rel="icon" href="logo.svg" type="image/svg+xml">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<a class="skip" href="#main">Skip to content</a>
 
 <header class="top">
   <div class="wrap">
-    <a class="brand" href="index.html">agent_range</a>
-    <nav><a href="index.html#book">Book a review</a></nav>
+    <a class="brand" href="index.html"><img src="logo.svg" alt="" width="30" height="30">Agent Range</a>
+    <nav aria-label="Site"><a href="index.html">Services</a><a href="https://cal.com/riad-moudjahed-favfz4/threat-model-review">Book a review</a></nav>
   </div>
 </header>
 
-<main class="report">
+<main class="report" id="main">
 
-<section>
+<section class="report-head">
   <div class="wrap">
-    <p class="eyebrow">Sample report</p>
+    <p class="kicker">Sample report</p>
     <h1>Larkspur Outfitters: AI agent security assessment</h1>
     <p class="lede">Larkspur Outfitters is fictional. This report covers the open-source Larkspur lab, so every finding can be reproduced. A real report follows the same structure.</p>
     <div class="table-scroll">
@@ -38,7 +42,7 @@
   </div>
 </section>
 
-<section>
+<section class="band">
   <div class="wrap">
     <h2>1. Executive summary</h2>
     <p>Any customer can make Larkspur's agents read other customers' orders and approve refunds of any size. A customer who files a support ticket can also make the internal triage agent pay out money above its policy limit, without talking to it. The common cause is that refund limits and data boundaries are written as instructions to the model, while the tools behind it accept any request. The most important fix is to enforce ownership checks and refund limits in the tool code, and to remove the refund tool from the agent that reads tickets.</p>
@@ -53,7 +57,7 @@
   </div>
 </section>
 
-<section>
+<section class="band">
   <div class="wrap">
     <h2>2. Threat model summary</h2>
     <p>Two agents share a back-end identity with full access to orders and refunds. Untrusted input reaches them through the customer chat and through support tickets, which any customer can write and the triage agent reads with staff authority.</p>
@@ -61,7 +65,7 @@
   </div>
 </section>
 
-<section>
+<section class="band">
   <div class="wrap">
     <h2>3. Findings</h2>
 
@@ -115,12 +119,12 @@ python -m larkspur check   # C3 solved: approved staff refund above 5000 cents</
   </div>
 </section>
 
-<section>
+<section class="band">
   <div class="wrap">
     <h2>4. Architecture recommendations</h2>
     <p>All three findings share one cause: the model is treated as the security boundary. Move every rule that matters into the tools. Give each tool the requesting user's identity instead of a shared account, and keep agents that read untrusted content away from tools that move money or change data.</p>
-    <div class="actions" style="margin-top:24px">
-      <a class="btn" href="index.html#book">Book a threat-model review for your agent</a>
+    <div class="actions">
+      <a class="btn" href="https://cal.com/riad-moudjahed-favfz4/threat-model-review">Book a threat-model review for your agent</a>
     </div>
   </div>
 </section>
@@ -128,7 +132,7 @@ python -m larkspur check   # C3 solved: approved staff refund above 5000 cents</
 </main>
 
 <footer>
-  <div class="wrap">Sample report on a fictional company. Agent Range</div>
+  <div class="wrap"><span>Agent Range</span><span>Sample report on a fictional company.</span></div>
 </footer>
 
 </body>
