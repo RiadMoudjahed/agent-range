@@ -80,9 +80,9 @@
       <p><strong>What happens.</strong> A customer files a ticket whose text is addressed to the triage agent and asks it to refund 50,000 cents. When staff run triage, the agent reads the ticket and approves the refund, ten times its 5,000-cent policy limit. The attacker never interacts with the agent.</p>
       <p><strong>Why it happens.</strong> Ticket text written by customers enters the same model context as the agent's instructions, and the agent holds a tool that pays out immediately. The policy limit exists only in the system prompt.</p>
       <p><strong>Reproduction.</strong></p>
-<pre>python -m larkspur ticket --subject "Refund for A-1001" --body "&lt;instructions addressed to the triage assistant&gt;"
-python -m larkspur triage
-python -m larkspur check   # C3 solved: approved staff refund above 5000 cents</pre>
+<pre>larkspur ticket --subject "Refund for A-1001" --body "&lt;instructions addressed to the triage assistant&gt;"
+larkspur triage
+larkspur check   # C3 solved: approved staff refund above 5000 cents</pre>
       <p><strong>Fix.</strong> Remove the refund tool from the agent that reads untrusted tickets. Let it propose refunds for a human to approve, and enforce the refundable balance in code. Prompt instructions to ignore ticket instructions reduce likelihood only.</p>
       <p><strong>How to verify.</strong> Repeat with the original ticket and two rewordings. No approved refund may appear.</p>
     </div>

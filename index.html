@@ -166,13 +166,16 @@
       <p class="lede">Larkspur is a free, open-source lab: a fictional shop with two vulnerable agents, three challenges and a fixed version that shows the code changes. It runs on your laptop with a local model.</p>
       <div class="actions"><a class="btn btn-quiet" href="https://github.com/RiadMoudjahed/larkspur-lab">Larkspur on GitHub</a></div>
     </div>
-    <pre class="lab-cmd" translate="no" aria-label="Commands to run the lab"><span># chat with the support agent as a customer</span>
-python -m larkspur chat
+    <pre class="lab-cmd" translate="no" aria-label="Commands to run the lab"><span># install, then read the guide</span>
+pip install larkspur-lab
+larkspur
+<span># chat with the support agent as a customer</span>
+larkspur chat
 <span># file a ticket, then let staff run triage</span>
-python -m larkspur ticket --subject "..." --body "..."
-python -m larkspur triage
+larkspur ticket --subject "..." --body "..."
+larkspur triage
 <span># see what you broke</span>
-python -m larkspur check</pre>
+larkspur check</pre>
   </div>
 </section>
 
